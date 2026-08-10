@@ -68,10 +68,10 @@ body {
 /* Globos de Diálogo (Speech Bubbles) */
 .speech-bubble {
   position: relative;
-  background: var(--fondo-globo);
-  border: 3px solid var(--negro-comic);
+  background: rgba(0, 0, 0, 0.9);
+  border: 3px solid #e5e7eb;
   border-radius: 18px;
-  color: var(--negro-comic);
+  color: #e5e7eb;
   padding: 12px 18px;
   font-weight: 700;
   font-size: 1.05rem;
@@ -141,9 +141,9 @@ body {
 
 /* Cartela de Narrador (Cuadro Rectangular de Pergamino) */
 .narrator-box {
-  background-color: var(--fondo-narrator);
+  background-color: rgba(0, 0, 0, 0.8);
   border: 3px solid var(--negro-comic);
-  color: #1a1a1a;
+  color: #e5e7eb;
   padding: 10px 16px;
   font-family: 'Comic Neue', cursive;
   font-weight: 700;
@@ -172,8 +172,8 @@ body {
 .onomatopeya {
   font-family: 'Bangers', cursive;
   font-size: 2.2rem;
-  color: var(--amarillo-comic);
-  text-shadow: 3px 3px 0px var(--negro-comic), -2px -2px 0px var(--negro-comic), 2px -2px 0px var(--negro-comic), -2px 2px 0px var(--negro-comic);
+  color: #fce055;
+  text-shadow: 2px 2px 0px var(--negro-comic), -1px -1px 0px var(--negro-comic), 1px -1px 0px var(--negro-comic), -1px 1px 0px var(--negro-comic);
   position: absolute;
   z-index: 30;
   opacity: 0;

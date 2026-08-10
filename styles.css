@@ -1,0 +1,229 @@
+/* ==========================================================================
+   PIEDRA BUENA: NOVELA GRÁFICA INTERACTIVA - ESTILOS INTERACTIVOS (styles.css)
+   Estilos de viñetas de cómic, bordes negros gruesos y globos de diálogo
+   ========================================================================== */
+
+/* Importación de fuentes tipográficas para cómic y epopeya histórica */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Cinzel+Decorative:wght@700;900&family=Comic+Neue:ital,wght@0,400;0,700;1,700&family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --negro-comic: #0d0d0d;
+  --amarillo-comic: #fce055;
+  --rojo-comic: #d93829;
+  --azul-marino: #1c3d5a;
+  --pergamino: #f4ece1;
+  --sombra-comic: rgba(0, 0, 0, 0.95);
+  --fondo-globo: #ffffff;
+  --fondo-narrador: #fff8dc;
+}
+
+/* Configuración Base y Tipografía */
+body {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  background-color: #070e17;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+.fuente-titulos-comic {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.05em;
+}
+
+.fuente-epica {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.fuente-narrador {
+  font-family: 'Comic Neue', cursive;
+  font-style: italic;
+}
+
+/* Efecto Trama de Imprenta de Cómic (Halftone) */
+.trama-imprenta {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+/* Viñeta de Cómic con Bordes Negros Gruesos (border-4 border-black) */
+.vineta-comic {
+  border: 4px solid var(--negro-comic);
+  box-shadow: 8px 8px 0px var(--sombra-comic);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  position: relative;
+  background-color: #0d1726;
+  overflow: hidden;
+}
+
+.vineta-comic:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 12px 12px 0px var(--sombra-comic), 0 0 20px rgba(199, 164, 107, 0.3);
+}
+
+.vineta-comic.vineta-activa {
+  border-color: #c7a46b;
+  box-shadow: 10px 10px 0px var(--sombra-comic), 0 0 30px rgba(199, 164, 107, 0.5);
+}
+
+/* Globos de Diálogo (Speech Bubbles) */
+.speech-bubble {
+  position: relative;
+  background: var(--fondo-globo);
+  border: 3px solid var(--negro-comic);
+  border-radius: 18px;
+  color: var(--negro-comic);
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  box-shadow: 4px 4px 0px var(--sombra-comic);
+  opacity: 0;
+  transform: scale(0.7) translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 25;
+}
+
+/* Pico / Cola del Globo de Diálogo */
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.speech-bubble-izquierda::before {
+  bottom: -16px;
+  left: 24px;
+  border-width: 16px 16px 0 0;
+  border-color: var(--fondo-globo) transparent transparent transparent;
+  filter: drop-shadow(0px 3px 0px var(--negro-comic));
+}
+
+.speech-bubble-derecha::before {
+  bottom: -16px;
+  right: 24px;
+  border-width: 16px 0 0 16px;
+  border-color: var(--fondo-globo) transparent transparent transparent;
+  filter: drop-shadow(0px 3px 0px var(--negro-comic));
+}
+
+/* Posicionamiento del Diálogo de Luis Piedra Buena en Juventud */
+.globo-luis-juventud {
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .globo-luis-juventud {
+    max-width: 420px;
+    margin-right: 2rem;
+  }
+}
+
+/* Globo Compacto para el Epílogo (Episodio IV) */
+.globo-epilogo-compacto {
+  max-width: 280px;
+  font-size: 0.875rem;
+  padding: 8px 14px;
+  box-shadow: 3px 3px 0px var(--negro-comic);
+  border-radius: 14px;
+}
+
+@media (min-width: 640px) {
+  .globo-epilogo-compacto {
+    max-width: 350px;
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+}
+
+/* Cartela de Narrador (Cuadro Rectangular de Pergamino) */
+.narrator-box {
+  background-color: var(--fondo-narrator);
+  border: 3px solid var(--negro-comic);
+  color: #1a1a1a;
+  padding: 10px 16px;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+  box-shadow: 4px 4px 0px var(--sombra-comic);
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 20;
+}
+
+/* Cartela Compacta para Esquinas Superior */
+.cartela-esquina {
+  max-width: 320px;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+}
+
+/* Clases de Activación por Scroll */
+.speech-bubble.bubble-visible,
+.narrator-box.narrator-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Onomatopeyas Estilo Cómic */
+.onomatopeya {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  color: var(--amarillo-comic);
+  text-shadow: 3px 3px 0px var(--negro-comic), -2px -2px 0px var(--negro-comic), 2px -2px 0px var(--negro-comic), -2px 2px 0px var(--negro-comic);
+  position: absolute;
+  z-index: 30;
+  opacity: 0;
+  transform: scale(0.3) rotate(-12deg);
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.onomatopeya.onomatopeya-visible {
+  opacity: 1;
+  transform: scale(1.1) rotate(-8deg);
+  animation: pulsoOnomatopeya 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulsoOnomatopeya {
+  0% { transform: scale(1) rotate(-8deg); }
+  100% { transform: scale(1.15) rotate(-4deg); }
+}
+
+/* Capa de Sombra Marítima */
+.capa-tormenta {
+  background: radial-gradient(circle at 50% 30%, rgba(11, 28, 44, 0.2) 0%, rgba(5, 10, 16, 0.85) 100%);
+}
+
+/* Visor Modal de Viñetas (Lightbox) */
+.fondo-modal {
+  background-color: rgba(3, 7, 12, 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.contenido-modal {
+  border: 5px solid var(--negro-comic);
+  box-shadow: 12px 12px 0px var(--sombra-comic);
+}
+
+/* Barra de Desplazamiento */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070e17;
+  border-left: 2px solid var(--negro-comic);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7a46b;
+  border: 2px solid var(--negro-comic);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fce055;
+}
